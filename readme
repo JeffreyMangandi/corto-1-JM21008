@@ -1,0 +1,3 @@
+en mi archivo solo en el Aplication.properties con local host como se muestra acontinuacion:
+
+spring.datasource.url=jdbc:postgresql://localhost:5432/postgres
