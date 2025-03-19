@@ -1,22 +1,12 @@
 FROM openjdk:11-jre-slim
+VOLUME /tmp
+COPY target/*.jar app.jar
+ENTRYPOINT ["java","-jar","/app.jar"]
 
-# Set the working directory inside the container
-WORKDIR /app
+FROM maven:3.8.4-openjdk-11 AS build
+COPY . .
+RUN mvn clean package -DskipTests
 
-# Copy the Maven wrapper files
-COPY .mvn .mvn
-COPY mvnw .
-COPY mvnw.cmd .
-
-# Copy the pom.xml and the source code
-COPY pom.xml .
-COPY src ./src
-
-# Give execution rights to the Maven wrapper
-RUN chmod +x mvnw
-
-# Package the application, skipping tests
-RUN ./mvnw clean package -DskipTests
-
-# Set the entry point for the container
-ENTRYPOINT ["java", "-jar", "target/*.jar"]
+FROM openjdk:11-jre-slim
+COPY --from=build /target/*.jar app.jar
+ENTRYPOINT ["java","-jar","/app.jar"]
