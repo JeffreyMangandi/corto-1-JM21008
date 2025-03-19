@@ -1,0 +1,19 @@
+-------------------------------------------------------------------------------
+Test set: com.libcode.crud.crud.CrudApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 7.151 s <<< FAILURE! - in com.libcode.crud.crud.CrudApplicationTests
+contextLoads  Time elapsed: 0.004 s  <<< ERROR!
+java.lang.IllegalStateException: Failed to load ApplicationContext for [WebMergedContextConfiguration@5788722f testClass = com.libcode.crud.crud.CrudApplicationTests, locations = [], classes = [com.libcode.crud.crud.CrudApplication], contextInitializerClasses = [], activeProfiles = [], propertySourceLocations = [], propertySourceProperties = ["org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true"], contextCustomizers = [org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@a38c7fe, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@52719fb6, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@20140db9, org.springframework.boot.test.autoconfigure.actuate.observability.ObservabilityContextCustomizerFactory$DisableObservabilityContextCustomizer@1f, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizer@173ed316, org.springframework.boot.test.context.SpringBootTestAnnotation@ce97c71c], resourceBasePath = "src/main/webapp", contextLoader = org.springframework.boot.test.context.SpringBootContextLoader, parent = null]
+Caused by: org.springframework.beans.factory.BeanCreationException: 
+Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is java.lang.IllegalStateException: PostInitCallback queue could not be processed...
+        - PostInitCallbackEntry - Entity(com.libcode.crud.crud.emails.entities.Email) `sqmMultiTableInsertStrategy` interpretation
+
+Caused by: jakarta.persistence.PersistenceException: 
+[PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is java.lang.IllegalStateException: PostInitCallback queue could not be processed...
+        - PostInitCallbackEntry - Entity(com.libcode.crud.crud.emails.entities.Email) `sqmMultiTableInsertStrategy` interpretation
+
+Caused by: java.lang.IllegalStateException: 
+PostInitCallback queue could not be processed...
+        - PostInitCallbackEntry - Entity(com.libcode.crud.crud.emails.entities.Email) `sqmMultiTableInsertStrategy` interpretation
+
+
